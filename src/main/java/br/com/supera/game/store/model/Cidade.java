@@ -1,4 +1,4 @@
-package br.com.supera.game.store;
+package br.com.supera.game.store.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
