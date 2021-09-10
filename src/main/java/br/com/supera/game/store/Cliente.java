@@ -1,62 +1,79 @@
 package br.com.supera.game.store;
 
-
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Cliente {
-    @Id
-    @GeneratedValue
-    public long id;
- 
-    public String name;
- 
-    public String cpf;
- 
-    public int idade;
- 
-    public String image;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
+@Table(name = "cliente")
+public class Cliente implements Serializable {
+	
+	public Cliente(Long id) {
 		this.id = id;
 	}
+	
+	public Cliente() {
+		
+	}
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	@NotBlank
+	private String nome;
+	@NotBlank
+	private String cpf;
+	@NotBlank
+	private String email;
+	@NotBlank
+	private String senha;
+	@OneToOne
+	private Endereco endereco;
 
-	public String getName() {
-		return name;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public String getCpf() {
 		return cpf;
 	}
-
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
-	public int getIdade() {
-		return idade;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-  
- }
+	
+}
