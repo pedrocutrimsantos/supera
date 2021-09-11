@@ -8,7 +8,7 @@ import br.com.supera.game.store.service.ClienteService;
 import br.com.supera.game.store.service.serviceimpl.EndercoServiceImpl.EnderecoServiceImpl;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.stereotype.Service;
+
 
 public class ClienteServiceImpl implements ClienteService {
 
@@ -23,7 +23,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Optional<Cliente> findById(Long id) {
-		return clienteRepository.findById(id);
+		return null;
 	}
 
 	@Override

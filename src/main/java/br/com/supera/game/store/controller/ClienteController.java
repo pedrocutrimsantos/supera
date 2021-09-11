@@ -1,8 +1,7 @@
 package br.com.supera.game.store.controller;
 
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.awt.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +28,6 @@ public class ClienteController {
 		return new ResponseEntity<Cliente>(clientes,HttpStatus.OK);
 	}
 	
-	@GetMapping("/listar")
-	public ResponseEntity<List<Cliente>> listar() {
-		List<Cliente> clientes = clienteServiceImpl.findAll();
-		return new ResponseEntity<List<Cliente>>(clientes,HttpStatus.OK);
-	}
 	
 	@PostMapping("/salvar")
 	public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente) {
