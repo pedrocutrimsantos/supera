@@ -1,9 +1,11 @@
 package br.com.supera.game.store.service.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import br.com.supera.game.store.model.Cliente;
+import br.com.supera.game.store.model.Endereco;
 import br.com.supera.game.store.repository.ClienteRepository;
 import br.com.supera.game.store.service.ClienteService;
+import br.com.supera.game.store.service.serviceimpl.EndercoServiceImpl.EnderecoServiceImpl;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,6 @@ public class ClienteServiceImpl implements ClienteService {
 	ClienteRepository clienteRepository;
 	@Autowired
 	EnderecoServiceImpl enderecoServiceImpl;
-	private ClienteServiceImpl clienteServiceImpl;
-	
 	@Override
 	public List<Cliente> findAll() {
 		return clienteRepository.findAll();

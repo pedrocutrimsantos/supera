@@ -5,4 +5,5 @@ import br.com.supera.game.store.model.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	Cliente findByEmail(String email);
+	Cliente findById(Long id);
 }
