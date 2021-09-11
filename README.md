@@ -39,3 +39,6 @@ Levaremos em conta os seguintes critérios:
   - A versão do Java pode ser atualizada para 11 ou 14.
   - Não existe restrição de framework (EE, Spring, Quarkus etc) mas será melhor avaliado se justificado no [README.md](./README.md) os motivos da decisão.
 # supera
+
+## Sobre a api utilizada
+API elabora com Spring, a escolha foi realizada devido a facilidade de importação de biblioteças e suporte do Spring tool Suite, além de ajudar na legibilidade do codigo em mesmo não estando completo.

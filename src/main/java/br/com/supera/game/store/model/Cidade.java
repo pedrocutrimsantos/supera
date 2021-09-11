@@ -11,14 +11,13 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "cidade")
 public class Cidade {
-	
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotBlank
 	private String nome;
-	
 	@ManyToOne
 	private Estado estado;
 
@@ -48,7 +47,7 @@ public class Cidade {
 
 	@Override
 	public String toString() {
-		return nome + "-"+estado.getSigla();
+		return nome + "-" + estado.getSigla();
 	}
-	
+
 }
