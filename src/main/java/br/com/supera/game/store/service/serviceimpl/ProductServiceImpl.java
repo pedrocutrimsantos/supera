@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product find(long id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService {
 		}
 		if (product.getImage() == null) {
 			return null;
-		}
+			}
 		return productRepository.save(product);
 	}
 	}
