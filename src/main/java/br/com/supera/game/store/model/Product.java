@@ -61,4 +61,9 @@ public class Product {
 
 	public String image;
 
+	public Double getValorVenda() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

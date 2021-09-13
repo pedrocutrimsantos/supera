@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import br.com.supera.game.store.model.Cliente;
-import br.com.supera.game.store.model.ItemCompra.ItensCompra;
+import br.com.supera.game.store.model.ItensCompra;
 import br.com.supera.game.store.model.Product;
 import br.com.supera.game.store.model.Venda;
+import br.com.supera.game.store.repository.ItensCompraRepository;
 import br.com.supera.game.store.repository.ProductRepository;
 import br.com.supera.game.store.repository.VendaRepository;
 
@@ -51,17 +52,12 @@ public class CarrinhoController {
 		return mv;
 	}
 
-	private void buscarUsuarioLogado() {
-		Authentication autenticado = SecurityContextHolder.getContext().getAuthentication();
-		if (!(autenticado instanceof AnonymousAuthenticationToken)) {
-			// cliente = repositorioCliente.buscarClienteEmail(email).get(0);
-		}
-	}
+	
+	
 
 	@GetMapping("/finalizar/")
 	public ModelAndView finalizarCompra() {
-		buscarUsuarioLogado();
-		ModelAndView mv = new ModelAndView("cliente/finalizar");
+			ModelAndView mv = new ModelAndView("cliente/finalizar");
 		calcularTotal();
 		// System.out.println(compra.getValorTotal());
 		mv.addObject("compra", compra);
@@ -82,7 +78,7 @@ public class CarrinhoController {
 			repositorioItensCompra.saveAndFlush(c);
 		}
 		itensCompra = new ArrayList<>();
-		compra = new Compra();
+		compra = new Venda();
 		return mv;
 	}
 
@@ -90,7 +86,7 @@ public class CarrinhoController {
 	public String alterarQuantidade(@PathVariable Long id, @PathVariable Integer acao) {
 
 		for (ItensCompra it : itensCompra) {
-			if (it.getProduto().getId().equals(id)) {
+			if (it.getProduct().getId().equals(id)) {
 				// System.out.println(it.getValorTotal());
 				if (acao.equals(1)) {
 					it.setQuantidade(it.getQuantidade() + 1);
@@ -124,12 +120,12 @@ public class CarrinhoController {
 	@GetMapping("/adicionarCarrinho/{id}")
 	public String adicionarCarrinho(@PathVariable Long id) {
 
-		Optional<Product> prod = repositoryProduct.findById(id);
+		Optional<Product> prod = Optional.ofNullable(repositoryProduct.findById(id));
 		Product product = prod.get();
 
 		int controle = 0;
 		for (ItensCompra it : itensCompra) {
-			if (it.getProduct().getId().equals(produto.getId())) {
+			if (it.getProduct().getId().equals(product.getId())) {
 				it.setQuantidade(it.getQuantidade() + 1);
 				it.setValorTotal(0.);
 				it.setValorTotal(it.getValorTotal() + (it.getQuantidade() * it.getValorUnitario()));

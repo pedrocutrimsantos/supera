@@ -33,6 +33,7 @@ public class ProductDaoExampleTest {
     @DataSet("products.yml") 
     public void shouldListProducts() {
 		try {
+			@SuppressWarnings("unchecked")
 			List<Product> products = em(). 
 					createQuery("select p from Product p").
 					getResultList();

@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrincipalController {
 
 	@RequestMapping("/")
-    public String index(){
-        return "post";
-    }
+	public String index() {
+		return "post";
+	}
+
 	@GetMapping("/administrativo")
 	public String acessarPrincipal() {
 		return "administrativo/home";
 	}
 }
-

@@ -1,4 +1,5 @@
 package br.com.supera.game.store.model;
+
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Venda {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCompra = new Date();
 	private String formaPagamento;
-	private Double valorTotal=0.;
+	private Double valorTotal = 0.;
 
 	public Long getId() {
 		return id;
