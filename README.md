@@ -41,7 +41,7 @@ Levaremos em conta os seguintes critérios:
 # supera
 
 ## Sobre a api utilizada
-API elabora com Spring, a escolha foi realizada devido a facilidade de importação de biblioteças e suporte do Spring tool Suite, além de ajudar na legibilidade do codigo em mesmo não estando completo.
+API elabora com Spring, a escolha foi realizada devido a facilidade de importação de biblioteças e suporte do Spring tool Suite, além de ajudar na legibilidade do codigo mesmo não estando completo.
 linhas de comandos especificadas nos @GetMapping e @PostsMapping e http://localhost:8080/swagger-ui.html
-
+Por não ter um conhecimento aprofundado nos metodos de aplicação em ResponseEntity algumas funções foram descritas em ModelAndView.
 
