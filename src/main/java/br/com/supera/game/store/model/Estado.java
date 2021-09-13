@@ -41,6 +41,10 @@ public class Estado {
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
+	public Estado findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 

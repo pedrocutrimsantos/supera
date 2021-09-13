@@ -8,7 +8,7 @@ import br.com.supera.game.store.model.Endereco;
 import br.com.supera.game.store.repository.EnderecoRepository;
 import br.com.supera.game.store.service.EnderecoService;
 
-public class EndercoServiceImpl {
+
 	@Service
 	public class EnderecoServiceImpl implements EnderecoService {
 		@Autowired
@@ -27,4 +27,3 @@ public class EndercoServiceImpl {
 
 		}
 	}
-}

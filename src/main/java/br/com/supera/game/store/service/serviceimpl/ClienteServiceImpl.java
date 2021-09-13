@@ -5,7 +5,6 @@ import br.com.supera.game.store.model.Cliente;
 import br.com.supera.game.store.model.Endereco;
 import br.com.supera.game.store.repository.ClienteRepository;
 import br.com.supera.game.store.service.ClienteService;
-import br.com.supera.game.store.service.serviceimpl.EndercoServiceImpl.EnderecoServiceImpl;
 import java.util.List;
 import java.util.Optional;
 
