@@ -11,21 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+import br.com.supera.game.store.model.Cliente;
+import br.com.supera.game.store.model.ItemCompra.ItensCompra;
+import br.com.supera.game.store.model.Product;
+import br.com.supera.game.store.model.Venda;
 import br.com.supera.game.store.repository.ProductRepository;
+import br.com.supera.game.store.repository.VendaRepository;
 
 @RestController
 @RequestMapping("/CarrinhoController")
 public class CarrinhoController {
 	private List<ItensCompra> itensCompra = new ArrayList<ItensCompra>();
-	private Compra compra = new Compra();
+	private Venda compra = new Venda();
 	private Cliente cliente;
 
 	@Autowired
 	private ProductRepository repositoryProduct;
 
 	@Autowired
-	private CompraRepository repositoryCompra;
+	private VendaRepository repositoryCompra;
 
 	@Autowired
 	private ItensCompraRepository repositorioItensCompra;
@@ -108,7 +112,7 @@ public class CarrinhoController {
 	public String removerProdutoCarrinho(@PathVariable Long id) {
 
 		for (ItensCompra it : itensCompra) {
-			if (it.getProduto().getId().equals(id)) {
+			if (it.getProduct().getId().equals(id)) {
 				itensCompra.remove(it);
 				break;
 			}
@@ -120,12 +124,12 @@ public class CarrinhoController {
 	@GetMapping("/adicionarCarrinho/{id}")
 	public String adicionarCarrinho(@PathVariable Long id) {
 
-		Optional<Produto> prod = repositoryProduto.findById(id);
-		Produto produto = prod.get();
+		Optional<Product> prod = repositoryProduct.findById(id);
+		Product product = prod.get();
 
 		int controle = 0;
 		for (ItensCompra it : itensCompra) {
-			if (it.getProduto().getId().equals(produto.getId())) {
+			if (it.getProduct().getId().equals(produto.getId())) {
 				it.setQuantidade(it.getQuantidade() + 1);
 				it.setValorTotal(0.);
 				it.setValorTotal(it.getValorTotal() + (it.getQuantidade() * it.getValorUnitario()));
@@ -135,8 +139,8 @@ public class CarrinhoController {
 		}
 		if (controle == 0) {
 			ItensCompra item = new ItensCompra();
-			item.setProduto(produto);
-			item.setValorUnitario(produto.getValorVenda());
+			item.setProduto(product);
+			item.setValorUnitario(product.getValorVenda());
 			item.setQuantidade(item.getQuantidade() + 1);
 			item.setValorTotal(item.getValorTotal() + (item.getQuantidade() * item.getValorUnitario()));
 
